@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include "base.html" %}
+    <title> User Login </title>
+    <style>
+        .err {
+            color: blueviolet;
+            text-shadow: 5;
+            font-family: italic;
+        }
+    </style>
+</head>
+
+<!-- <body vlink="RED" style="background-color: rgb(76, 226, 206);"> -->
+
+<body>
+    <center>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {% include "headerlinks.html" %}
+
+            {% include "navbar.html" %}
+
+            <h3 style="text-align: center;color: red; font-style: italic;"> User Login Form </h3>
+            <h4 style="color: coral;"> {{message}} </h4>
+            {% for frm in form %}
+            {{frm.label_tag}} {{frm}} {{frm.errors | striptags}} <br><br>
+            {% endfor %}
+            <input type="submit" value="submit">
+            {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+            <p class="err">{{error}}</p>
+            {% endfor %}
+            {% endif %}
+
+        </form>
+    </center>
+    {% include "footer.html"%}
+</body>
+
+</html>

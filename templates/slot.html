@@ -1,0 +1,127 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include "base.html"%}
+    <title>Vaccine slot details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: rgb(76, 226, 206);
+        }
+
+        .table_content {
+            border-collapse: collapse;
+            margin: 25px;
+            /* min-width: 400px; */
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+            box-shadow: 0 0 20px black;
+        }
+
+        .table_content thead tr {
+            /* background-color: #009879; */
+            background-color: rgba(0, 0, 0, 0.678);
+            color: #ffffff;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .table_content th,
+        .talbel_content td {
+            padding: 10px 10px;
+        }
+
+        .table_content tbody tr {
+            border-bottom: 1px solid #dddddd;
+            font-size: 0.9em;
+            text-align: center;
+            /* border: 1px solid black; */
+        }
+
+        .table_content tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3e8;
+        }
+
+        .table_content tbody tr:nth-of-type(odd) {
+            background-color: white;
+        }
+
+        .table_content tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+
+        input[type=text] {
+            width: 30%;
+            padding: 2px
+        }
+
+        h1 {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: rgba(0, 0, 0, 0.788);
+            font-weight: bold;
+        }
+
+        .vacimg {
+            display: block;
+            padding-top: 10px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+<body style="background-color:rgb(76, 226, 206);text-decoration: none;">
+    {% include "headerlinks.html"%}
+    {% include "navbar.html"%}
+    <div class="container">
+
+        <img src="{% static 'images/vac.jpeg'%}" width="400" height="400" class="vacimg"><br>
+        <center>
+            <form action="" method="GET">
+                PINCODE: <input type="text" name="pincode" placeholder="eg.800001">&ensp;
+                DATE: <input type="text" name="date" placeholder="dd-mm-yyyy">&ensp;
+
+                <button type="submit" name="submit" class="btn btn-dark">Search</button>
+
+                <table class="table_content">
+                    <thead>
+                        <tr>
+                            <th>Name/Add</th>
+                            <th>State</th>
+                            <th>District</th>
+                            <th>Pincode</th>
+                            <th>Date</th>
+                            <th>Vaccine Type</th>
+                            <th>Minimum Age</th>
+                            <th>Avilable Vaccine</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in api_data %}
+                        <tr>
+                            <td>{{i.name}}</td>
+                            <td>{{i.state}}</td>
+                            <td>{{i.district}}</td>
+                            <td>{{i.pincode}}</td>
+                            <td>{{i.date}}</td>
+                            <td>{{i.vaccine_type}}</td>
+                            <td>{{i.min_age_limit}}</td>
+                            <td>{{i.available_capacity}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+        </center>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ"
+        crossorigin="anonymous"></script>
+</body>
+{% include "footer.html"%}
+
+</html>

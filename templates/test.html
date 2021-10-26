@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extra file </title>
+</head>
+
+<body>
+    <div>
+        <button type="button" onclick="searchData()" id='show'> search data </button>
+        <button type="button" onclick="updateData()" id='updateD'> Update data </button>
+
+    </div>
+    <form id="search" action="">
+        <h1> Seach Form </h1>
+    </form>
+    <form id="update" action="" style="display: none;">
+        <h1> Update form </h1>
+    </form>
+    <script type="text/javascript">
+        function searchData() {
+            document.getElementById("update").style.display = "none";
+            document.getElementById("search").style.display = "block";
+
+        }
+        function updateData() {
+            document.getElementById("search").style.display = "none";
+            document.getElementById("update").style.display = "block";
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

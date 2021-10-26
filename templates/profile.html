@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include "base.html" %}
+    <title> User Profile </title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .bk {
+            margin-left: -8px;
+            background: rgb(130, 183, 187) url("/static/images/vaccine.jfif");
+            background-size: cover;
+            width: 1270px;
+            height: 478px;
+            background-blend-mode: darken;
+
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <form action="" method="POST" style="align-items: center;">
+            {% csrf_token %}
+            {% include "headerlinks.html" %}
+            {% include "navbar.html" %}
+
+            <div class="bk">
+                <form>
+                    <h1 style="color: rgb(173, 21, 80);">
+                        Welcome {{name}} {% if user.is_superuser %}(ADMIN) {% else %} (USER){% endif %}
+                    </h1>
+                    <!-- {{messages}} -->
+                    {% if messages %}
+                    {% for message in messages %}
+                    <h3 style="color: red;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">
+                        {{message}}</h3>
+                    {% endfor %}
+                    {% endif %}<br>
+                    {% for frm in form %}
+                    {{frm.label_tag}}
+                    {{frm}}
+                    {{frm.errors|striptags}}<br> {% endfor %}
+                    <br>
+                </form>
+            </div>
+
+        </form>
+    </center>
+    {% include "footer.html" %}
+</body>
+
+</html>

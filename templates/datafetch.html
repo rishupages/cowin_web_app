@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>data fetch page</title>
+</head>
+
+<body>
+
+
+    <table border="2">
+        <tr>
+            <th> Name </th>
+            <th> UId </th>
+            <th> Ref id </th>
+            <th> Age </th>
+            <th> first_booking </th>
+            <th> Second Booking </th>
+        </tr>
+        {% for data in data %}
+        <tr>
+            <th>{{data.name }}</th>
+            <th>{{data.name }}</th>
+            <th>{{data.ref_id}}</th>
+            <th>{{data.age}}</th>
+            <th>{{data.first_booking}}</th>
+            <th>{{data.second_booking}}</th>
+        </tr>
+
+        {% endfor %}
+    </table>
+    {% for objdata in objdata %}
+    {{objdata.uid}}
+    {% endfor %}
+    <script>
+        $(document).ready(function () {
+            $('#mybtn').click(function () {
+                $('#myform').toggle(500);
+            });
+        });
+    </script>
+    <button id="mybtn" onclick=""> search button</button>
+
+
+
+</body>
+
+</html>

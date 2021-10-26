@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include "base.html" %}
+    <title> Add Member </title>
+</head>
+
+<body vlink="red" style="background-color: rgb(76, 226, 206);text-decoration: none;">
+    {% include "headerlinks.html" %}
+    {% include "navbar.html" %}
+    <center>
+        <h1> {% if messages %}
+            {% for messages in messages %}
+            {{messages}}
+            {% endfor %}
+            {% endif %} </h1>
+
+        <form action="{% url 'memberPage'%}" method="POST" id="add" style="display: none;">
+            {% csrf_token %}
+            {{number}}
+
+
+
+            Name: <input type="text" placeholder="Enter ur Name" name="name" id="" required /><br><br>
+            UID NO. : <input type="number" placeholder="Enter UID Number" name="uid" id="" required /><br><br>
+            Age: <input type="number" placeholder="Enter your age" name="age" id="" required /><br><br>
+            <!-- First Booking: <input type="date" placeholder="Enter 1st booking date" name="first" id="" required /><br>
+        Second Booking: <input type="date" placeholder="Enter Second booking date" name="second" id="" required /><br> -->
+
+            <input type="submit" value="submit" name='add' /><br><br>
+
+        </form>
+
+        <!-- for Show all Members -->
+        <form method="POST" id="member" style="display: block;">
+            {% csrf_token %}
+            {% if messages %}
+            {% for messages in messages %}
+            {{messages}}
+            {% endfor %}
+            {% endif %}
+
+            <h1> Member Added </h1>
+
+
+            <table border="2" style="color:rgb(35, 123, 224); border-color: red;">
+                <tr>
+                    <th> Name </th>
+                    <th> UId </th>
+                    <th> Age </th>
+                    <th> first_booking </th>
+                    <th> Second Booking </th>
+                </tr>
+                {% for data in data %}
+                <tr>
+                    <th>{{data.name }}</th>
+                    <th>{{data.uid }}</th>
+                    <th>{{data.age}}</th>
+                    {% if data.first_booking == none %}
+                    <th> - </th>
+                    {% else %}
+                    <th>{{data.first_booking}}</th>
+                    {% endif %}
+                    {% if data.second_booking == none %}
+                    <th style="color:royalblue"> - </th>
+                    {% else %}
+                    <th>{{data.second_booking}}</th>
+                    {% endif %}
+
+                </tr>
+
+                {% endfor %}
+            </table>
+        </form>
+
+        <!-- Define some Button -->
+        <form method="POST">
+            {% csrf_token %}<br>
+            <button type="button" onclick="show_member()"> Show Member </button><br><br>
+            <!-- <button type="button" onclick="search_center()"> Search Center </button><br><br> -->
+            <button type="button" onclick="add_member()"> Add Member </button><br><br>
+        </form>
+
+
+
+        <script type="text/javascript">
+            function show_member() {
+                // document.getElementById("center").style.display = "none";
+                document.getElementById("add").style.display = "none";
+                document.getElementById("member").style.display = "block";
+            }
+            // function search_center() {
+            //     document.getElementById("member").style.display = "none";
+            //     document.getElementById("add").style.display = "none";
+            //     document.getElementById("center").style.display = "block";
+            // }
+            function add_member() {
+                document.getElementById("member").style.display = "none";
+                // document.getElementById("center").style.display = "none";
+                document.getElementById("add").style.display = "block";
+            }
+
+        </script>
+    </center>
+    {% include "footer.html" %}
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include "base.html" %}
+    <title> Vaccine Booking Page </title>
+</head>
+
+<body style="background-color: rgb(104, 197, 96);">
+    <center>
+
+        <form method="POST">
+            {% csrf_token %}
+            {% include "headerlinks.html" %}
+            {% include "navbar.html" %}
+            <h3 style="text-align: center;color: red; font-style: italic;"> Book Vaccine Slot </h3>
+
+            <h3 style="color: blueviolet;font-family: Arial, Helvetica, sans-serif;">
+
+            </h3>
+            uid: <input type="number" name="uid" id="" required /><br><br>
+            pincode: <input type="number" name="pincode" id="" required><br><br>
+            Date : <input type="text" value="{{date}}" readonly />
+            <input type="submit" value="book" id=""><br><br>
+
+            <h3 style="color: RED;font-style: italic;"> {{message}} </h3>
+        </form>
+    </center>
+</body>
+{% include "footer.html" %}
+
+</html>

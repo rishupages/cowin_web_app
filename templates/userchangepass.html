@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include "base.html" %}
+    <title> User change Password </title>
+
+</head>
+
+<body>
+    <from action="" method='POST' novalidate>
+        {% include "headerlinks.html" %}
+        {% include "navbar.html" %}
+
+
+        {% for frm in form %}
+        {{ frm.label_tag }} {{frm}} {{frm.errors|striptags}} <br><br>
+        {% endfor %}
+        <input type="submit" value="save" /><br><br>
+        <a href="{% url 'logoutPage'%}"> logout </a><br>
+        <a href="{% url 'profilePage'%}"> Profile </a><br>
+        {{message}}
+    </from>
+    {% include "footer.html" %}
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include "base.html" %}
+    <title> Vaccine Slot Booking </title>
+</head>
+
+<body style="background-color: antiquewhite;">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {% include "headerlinks.html" %}
+        {% include "navbar.html" %}
+        <center>
+            Date : <input type="text" value="{{date}}" readonly /><br>
+            City : <input type="text" name="city" id="" required><br>
+            PinCode : <input type="number" name="pin_code" id="" required><br>
+            Vaccine 12 : <input type="number" name="vac_12" id="" required><br>
+            Vaccine 18 : <input type="number" name="vac_18" id="" required><br>
+            Vaccine 45 : <input type="number" name="vac_45" id="" required><br>
+            Vaccine 60 : <input type="number" name="vac_60" id="" required><br>
+
+            <input type="submit" name="submit" id=""><br><br>
+
+        </center>
+
+    </form>
+</body>
+{% include "footer.html" %}
+
+</html>
